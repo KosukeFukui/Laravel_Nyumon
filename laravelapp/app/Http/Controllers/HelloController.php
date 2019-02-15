@@ -14,8 +14,8 @@ class HelloController extends Controller {
     public function index(Request $request) {
         $user = Auth::user();
         $sort = $request->sort;
-        //$items = DB::table('people')->orderBy($sort, 'asc')->paginate(5);
-        $items = Person::orderBy($sort, 'asc')->simplePaginate(5);
+        $items = DB::table('people')->orderBy($sort, 'asc')->simplePaginate(5);
+        //$items = Person::orderBy($sort, 'asc')->simplePaginate(5);
         $param = ['items' => $items, 'sort' => $sort, 'user' => $user];
         return view('hello.index', $param);
     }
